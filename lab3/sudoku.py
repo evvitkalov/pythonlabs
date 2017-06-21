@@ -25,10 +25,10 @@ def display(values):
     width = 2
     line = '+'.join(['-' * (width * 3)] * 3)
     for row in range(9):
-        print(''.join(values[row][col].center(width) + ('|' if str(col) in '25' else '') for col in range(9)), file=out)
+        print(''.join(values[row][col].center(width) + ('|' if str(col) in '25' else '') for col in range(9)))
         if str(row) in '25':
-            print(line, file=out)
-    print('', file=out)
+            print(line)
+    print()
 
 def get_row(values, pos): return values[pos[0]]
 
@@ -121,13 +121,10 @@ def generate_sudoku(n):
                 a[-1]=str(box)
             print(a)
             grid.append(a)
-	print(grid)
     return grid
 	
 if __name__ == '__main__':
-    out=open("output.txt", mode='w')
     for fname in ['puzzle1.txt', 'puzzle2.txt', 'puzzle3.txt']:
         grid = read_sudoku(fname)
         solve(grid)
         display(grid)
-    out.close()
